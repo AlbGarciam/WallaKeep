@@ -9,8 +9,6 @@ class SignIn extends React.Component {
     constructor(props) {
         super(props);
 
-        // 3. Comprobar si ya ha iniciado sesión, si es así redirigir a /home
-
         this.state = {
             name: "",
             surname: "",
