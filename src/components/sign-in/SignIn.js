@@ -1,8 +1,9 @@
 import React from "react";
 import './SignIn.css';
 import Tags from "../tags/Tags";
-import {USER_SESSION_KEY} from "../../services/Util";
+import {USER_SESSION_KEY, isOldThan18YearsOld, signedIn} from "../../services/Util";
 import {withRouter} from "react-router-dom";
+import { bigIntLiteral } from "@babel/types";
 
 class SignIn extends React.Component {
     constructor(props) {
@@ -20,6 +21,12 @@ class SignIn extends React.Component {
         this.handleSignIn = this.handleSignIn.bind(this);
     }
 
+    componentDidMount() {
+        if (signedIn()) {
+            this.props.history.push("/home/");
+        }
+    }
+
     handleTyping(event) {
         const {name, value} = event.target;
 
@@ -33,7 +40,25 @@ class SignIn extends React.Component {
 
         const {name, surname, birthday, tag} = this.state;
 
-        // 3. Realizar las validaciones de name, surname y birthday. Debe ser mayor de 18 años
+        if (!isOldThan18YearsOld(birthday)) { 
+            alert("You must have 18 at least");
+            return;
+        }
+
+        if (name.length === 0) {
+            alert("Enter your name");
+            return;
+        }
+
+        if (surname.length === 0) {
+            alert("Enter your surname");
+            return;
+        }
+
+        if (!tag) {
+            alert("Select your tag");
+            return;
+        }
 
         sessionStorage.setItem(USER_SESSION_KEY, JSON.stringify({
             name: name.trim(),

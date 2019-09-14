@@ -4,13 +4,22 @@ import Navbar from "../navbar/Navbar";
 import SaleSearch from "../sale-search/SaleSearch";
 import ContactUs from "../contact-us/ContactUs";
 import ErrorBoundary from "../error-boundary/ErrorBoundary";
+import SaleItemFullScreen from "../sale-item-full-screen/SaleItemFullScreen";
+import {signedIn} from "../../services/Util";
 import { Route } from "react-router-dom";
 
 export default class Home extends React.Component {
     constructor(props) {
         super(props);
+        
 
         // 3. Comprobar que el usuario se ha registrado
+    }
+
+    componentDidMount() {
+        if (!signedIn()) {
+            this.props.history.replace("/");
+        }
     }
 
     render() {
@@ -43,7 +52,7 @@ export default class Home extends React.Component {
                         <h2>This is your place!</h2>
                     </div>)} />
                     <Route exact path={`${this.props.match.path}/search`} component={SaleSearch} />
-                    {/*1. Crear la ruta correspondiente a el componente SaleItemFullScreen, para más información ver el componente.*/}
+                    <Route exact path={`${this.props.match.path}/sale`} component={SaleItemFullScreen}/>
                     <Route exact path={`${this.props.match.path}/contact-us`} component={ContactUs} />
                 </ErrorBoundary>
             </div>
