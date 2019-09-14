@@ -11,9 +11,6 @@ import { Route } from "react-router-dom";
 export default class Home extends React.Component {
     constructor(props) {
         super(props);
-        
-
-        // 3. Comprobar que el usuario se ha registrado
     }
 
     componentDidMount() {
