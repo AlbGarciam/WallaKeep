@@ -1,7 +1,7 @@
 // IMPORTANTE
 // En este fichero encontrarás utilidades que te ayudarán a completar la práctica. Lee con atención todas las funciones antes de empezar a realizar la práctica.
 
-export const HOST = "http://localhost:3000";
+export const HOST = "http://localhost:8080";
 export const API = `apiv1`;
 
 export const USER_SESSION_KEY = "currentUser";

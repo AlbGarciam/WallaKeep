@@ -1,4 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Wallakeep
+## Important!
+
+Before starting this project you should have an instance of [Express_Adverts](https://github.com/AlbGarciam/Express_Adverts) running.
 
 ## Available Scripts
 
