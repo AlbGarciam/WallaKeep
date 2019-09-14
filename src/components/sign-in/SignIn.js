@@ -54,12 +54,7 @@ class SignIn extends React.Component {
             alert("Enter your surname");
             return;
         }
-
-        if (!tag) {
-            alert("Select your tag");
-            return;
-        }
-
+        
         sessionStorage.setItem(USER_SESSION_KEY, JSON.stringify({
             name: name.trim(),
             surname: surname.trim(),

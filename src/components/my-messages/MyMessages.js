@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {getSavedMessages} from '../../services/Util';
 
 export default class MyMessages extends Component {
     render() {
