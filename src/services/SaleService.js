@@ -1,7 +1,7 @@
-import {API, HOST} from "./Util";
+import { API, HOST } from "./Util";
 
 export default class SaleService {
-    getSales({start, limit, sort, includeTotal = true, tag, price, name}) {
+    getSales({ start, limit, sort, includeTotal = true, tag, price, name }) {
         // Empezamos la query
         let query = "?";
 
@@ -19,12 +19,15 @@ export default class SaleService {
     }
 
     getTags() {
-        return new Promise((resolve) => {
-            return resolve({
-                    ok: true,
-                    allowedTags: ["A", "B"]
-                }
-            )
-        }) // 2. Eliminar estas líneas y realizar la llamada a NodePop para obtener todos los tags
+        return fetch(`${HOST}/${API}/adverts/tags`, {
+            method: "GET"
+        }).then(response => {
+            return response.json();
+        }).then(data => {
+            return {
+                ok: true,
+                allowedTags: data.tags
+            }
+        }); 
     }
 }
