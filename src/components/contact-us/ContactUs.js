@@ -1,13 +1,14 @@
 import React from "react";
 import './ContactUs.css';
-import {getSavedMessages, saveMessages, signedIn} from "../../services/Util";
+import { getSavedMessages, saveMessages, signedIn } from "../../services/Util";
 import ContactUsForm from "../contact-us-form/ContactUsForm";
 import MyMessages from "../my-messages/MyMessages";
+import MyMessagesContext from "../my-messages/MyMessagesContext";
 
 export default class ContactUs extends React.Component {
     constructor(props) {
         super(props);
-        
+
         this.state = {
             messages: getSavedMessages()
         };
@@ -22,11 +23,11 @@ export default class ContactUs extends React.Component {
     }
 
     onSubmit(message) {
-        const {messages} = this.state;
+        const { messages } = this.state;
 
         messages.push(message);
 
-        this.setState({messages}, () => {
+        this.setState({ messages }, () => {
             saveMessages(this.state.messages);
         });
     }
@@ -36,11 +37,12 @@ export default class ContactUs extends React.Component {
             <div className={`contact-us container`}>
                 <div className="row">
                     <div className="col-6">
-                        <ContactUsForm onSubmit={this.onSubmit}/>
+                        <ContactUsForm onSubmit={this.onSubmit} />
                     </div>
                     <div className="col-6 text-center">
-                        {/*4. Es necesario un contexto para poder pasarle los mensajes*/}
-                        <MyMessages/>
+                        <MyMessagesContext.Provider value={this.state.messages}>
+                            <MyMessages />
+                        </MyMessagesContext.Provider>
                     </div>
                 </div>
             </div>
