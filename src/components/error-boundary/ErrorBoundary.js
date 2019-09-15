@@ -1,29 +1,39 @@
 import React from 'react';
 
+import '../home/Home.css';
+
 export default class ErrorBoundary extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { error: null };
-      }
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: false,
+      info: null,
+    };
+  }
 
-    componentDidCatch(error, errorInfo) {
-        console.log(error);
-        console.log(errorInfo);
-        this.setState({ error });
-    }
+  componentDidCatch(error, info) {
+    console.log("did catch error");
+    this.setState({
+      error: error,
+      info: info,
+    });
+  }
 
-    render() {
-        if (this.state.error) {
-          return (
-            <div>
-              <div>
-                <p>We're sorry - something's gone wrong.</p>
-                <p>Our team has been notified, but click <button>here</button> to fill out a report.</p>
+  render() {
+    if (this.state.error) {
+      return (
+        <header className="App-header">
+          <div className="container">
+            <div className="row mt-3">
+              <div className="col-5 logo-text">
+                <h1><b>An error occurred</b></h1>
+                <h6><i>Try again in a few minutes</i></h6>
               </div>
             </div>
-          );
-        } else {
-          return this.props.children;
-        }
+          </div>
+        </header>
+      );
     }
+    return this.props.children;
+  }
 }
