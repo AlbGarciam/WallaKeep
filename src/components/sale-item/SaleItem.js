@@ -12,13 +12,13 @@ export default class SaleItem extends React.Component {
                     <div className="col-5">
                         <b>Nombre</b>
                         <br/>
-                        {this.props.item.nombre}
+                        {this.props.item.name}
 
                         <br/>
 
                         <b>Precio</b>
                         <br/>
-                        {this.props.item.precio} €
+                        {this.props.item.price} €
 
                         <br/>
 

@@ -3,6 +3,7 @@ import './SaleSearch.css'
 import SaleService from "../../services/SaleService";
 import SaleItem from "../sale-item/SaleItem";
 import { signedIn, currentUser } from "../../services/Util";
+import { thisExpression } from "@babel/types";
 
 const service = new SaleService();
 
@@ -41,7 +42,13 @@ export default class SaleSearch extends React.Component {
     }
 
     search() {
-        // 2. Llamar al servicio service.getSales(this.state.search), gestionar su petición y añadir al estado su resultado
+        service.getSales(this.state.search).then(res => {
+            if (res.adverts) {
+                this.setState({
+                    sales: res.adverts
+                });
+            }
+        });
     }
 
     handleSearch(event) {
@@ -88,7 +95,7 @@ export default class SaleSearch extends React.Component {
                             {
                                 this.state.sales.map((sale, index) => {
                                     return (
-                                        <div key={sale._id} className="col-4" onClick={() => this.props.history.push(`/sale/${sale._id}`)}>
+                                        <div key={sale.cuid} className="col-4" onClick={() => this.props.history.push(`/sale/${sale.cuid}`)}>
                                             <SaleItem item={sale}/>
                                         </div>
                                     )
