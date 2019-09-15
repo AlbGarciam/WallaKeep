@@ -53,11 +53,10 @@ export default class SaleSearch extends React.Component {
 
     handleSearch(event) {
         const {name, value} = event.target;
-
+        var newSearch = this.state.search;
+        newSearch[name] = value.trim().length ? value.trim() : null;
         this.setState({
-            search: {
-                [name]: value.trim().length ? value.trim() : null
-            }
+            search: newSearch
         }, () => {
             this.search();
         });
@@ -95,7 +94,7 @@ export default class SaleSearch extends React.Component {
                             {
                                 this.state.sales.map((sale, index) => {
                                     return (
-                                        <div key={sale.cuid} className="col-4" onClick={() => this.props.history.push(`/sale/${sale.cuid}`)}>
+                                        <div key={sale.cuid} className="col-4" onClick={() => this.props.history.push(`/home/sale/${sale.cuid}`)}>
                                             <SaleItem item={sale}/>
                                         </div>
                                     )

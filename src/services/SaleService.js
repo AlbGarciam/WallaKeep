@@ -17,6 +17,8 @@ export default class SaleService {
         // Eliminamos el último & de la query
         query = query.substr(0, query.length - 1);
 
+        console.log(query);
+
         return fetch(`${HOST}/${API}/adverts${query}`, {
             method: "GET"
         }).then(res => res.json());

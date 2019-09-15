@@ -11,7 +11,6 @@ const service = new SaleService();
 export default class SaleItemFullScreen extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             item: {}
         };
@@ -21,9 +20,9 @@ export default class SaleItemFullScreen extends React.Component {
         // of one sale
         // DON'T DO IT in real application, this is only educational purpose
         service.getSales({}).then((res) => {
-            const items = res.result.rows;
+            const items = res.adverts;
 
-            let item = items.find((item) => item._id === this.props.match.params.id);
+            let item = items.find((item) => item.cuid === this.props.match.params.id);
 
             if (!item) {
                 this.props.history.goBack();
@@ -41,8 +40,8 @@ export default class SaleItemFullScreen extends React.Component {
             <div className={`container sale-desc`}>
                 <BackButton/>
                 <div className="text-center">
-                    <img className={`item-image`} src={`${HOST}${this.state.item.foto}`} alt={this.state.item.nombre}/>
-                    <h3>Se {this.state.item.venta ? "vende" : "alquila"} "{this.state.item.nombre}" por {this.state.item.precio} euros.</h3>
+                    <img className={`item-image`} src={`${HOST}${this.state.item.photo}`} alt={this.state.item.name}/>
+                    <h3>Se {this.state.item.sold ? "vende" : "alquila"} "{this.state.item.name}" por {this.state.item.price} euros.</h3>
                 </div>
             </div>
         );

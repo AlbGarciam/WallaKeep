@@ -49,7 +49,7 @@ export default class Home extends React.Component {
                         <h2>This is your place!</h2>
                     </div>)} />
                     <Route exact path={`${this.props.match.path}/search`} component={SaleSearch} />
-                    <Route exact path={`${this.props.match.path}/sale`} component={SaleItemFullScreen}/>
+                    <Route exact path={`${this.props.match.path}/sale/:id`} component={SaleItemFullScreen}/>
                     <Route exact path={`${this.props.match.path}/contact-us`} component={ContactUs} />
                 </ErrorBoundary>
             </div>
