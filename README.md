@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 # Wallakeep
 ## Important!
 
-Before starting this project you should have an instance of [Express_Adverts](https://github.com/AlbGarciam/Express_Adverts) running.
+Before starting this project you should have an instance of [Express_Adverts](https://github.com/AlbGarciam/Express_Adverts) running. Make sure you are deploying code from `disable_jwt` branch, this branch disables JWT and CORS for advert API.
 
 ## Available Scripts
 
