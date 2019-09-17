@@ -40,7 +40,7 @@ export default class SaleItemFullScreen extends React.Component {
             <div className={`container sale-desc`}>
                 <BackButton/>
                 <div className="text-center">
-                    <img className={`item-image`} src={`${HOST}${this.state.item.photo}`} alt={this.state.item.name}/>
+                    <img className={`item-image`} src={`${this.state.item.photo}`} alt={this.state.item.name}/>
                     <h3>Se {this.state.item.sold ? "vende" : "alquila"} "{this.state.item.name}" por {this.state.item.price} euros.</h3>
                 </div>
             </div>

@@ -11,9 +11,6 @@ import { Route } from "react-router-dom";
 export default class Home extends React.Component {
     constructor(props) {
         super(props);
-    }
-
-    componentDidMount() {
         if (!signedIn()) {
             this.props.history.replace("/");
         }

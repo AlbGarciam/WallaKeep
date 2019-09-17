@@ -14,9 +14,7 @@ export default class ContactUs extends React.Component {
         };
 
         this.onSubmit = this.onSubmit.bind(this);
-    }
 
-    componentDidMount() {
         if (!signedIn()) {
             this.props.history.replace("/");
         }

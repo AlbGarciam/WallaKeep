@@ -18,6 +18,10 @@ export default class SaleSearch extends React.Component {
             search: initialSearch
         };
 
+        if (!signedIn()) {
+            this.props.history.replace("/");
+        }
+
         this.search();
 
         this.handleSearch = this.handleSearch.bind(this);
@@ -33,12 +37,6 @@ export default class SaleSearch extends React.Component {
                 })
             }
         });
-    }
-
-    componentDidMount() {
-        if (!signedIn()) {
-            this.props.history.replace("/");
-        }
     }
 
     search() {

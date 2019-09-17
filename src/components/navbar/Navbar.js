@@ -18,9 +18,6 @@ class Navbar extends React.Component {
         };
 
         this.logout = this.logout.bind(this);
-    }
-
-    componentDidMount() {
         if (!signedIn()) {
             this.props.history.replace("/");
         }
