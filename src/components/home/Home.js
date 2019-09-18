@@ -5,7 +5,7 @@ import SaleSearch from "../sale-search/SaleSearch";
 import ContactUs from "../contact-us/ContactUs";
 import ErrorBoundary from "../error-boundary/ErrorBoundary";
 import SaleItemFullScreen from "../sale-item-full-screen/SaleItemFullScreen";
-import {signedIn} from "../../services/Util";
+import { signedIn } from "../../services/Util";
 import { Route } from "react-router-dom";
 
 export default class Home extends React.Component {
@@ -40,15 +40,19 @@ export default class Home extends React.Component {
                     </div>
                 </header>
                 <Navbar />
-                <ErrorBoundary>
-                    <Route exact path="/home/" component={() => (<div className="container home">
-                        <i>What are you looking for? A car? A bicycle? then...</i>
-                        <h2>This is your place!</h2>
-                    </div>)} />
-                    <Route exact path={`${this.props.match.path}/search`} component={SaleSearch} />
-                    <Route exact path={`${this.props.match.path}/sale/:id`} component={SaleItemFullScreen}/>
-                    <Route exact path={`${this.props.match.path}/contact-us`} component={ContactUs} />
-                </ErrorBoundary>
+                <Route exact path="/home/" component={() => (<div className="container home">
+                    <i>What are you looking for? A car? A bicycle? then...</i>
+                    <h2>This is your place!</h2>
+                </div>)} />
+                <Route exact path={`${this.props.match.path}/search`} render={(props) => (
+                    <ErrorBoundary><SaleSearch {...props} /></ErrorBoundary>
+                )} />
+                <Route exact path={`${this.props.match.path}/sale/:id`} render={(props) => (
+                    <ErrorBoundary><SaleItemFullScreen {...props} /></ErrorBoundary>
+                )} />
+                <Route exact path={`${this.props.match.path}/contact-us`} render={(props) => (
+                    <ErrorBoundary><ContactUs {...props} /></ErrorBoundary>
+                )} />
             </div>
         </div>
     }
